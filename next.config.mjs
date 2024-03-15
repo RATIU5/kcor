@@ -1,16 +1,17 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const config = {
   eslint: {
     // Disabling on production builds because we're running checks on PRs via GitHub Actions.
     ignoreDuringBuilds: true
   },
-  experimental: {
-    serverActions: true
-  },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        hostname: process.env.BIGCOMMERCE_CDN_HOSTNAME ?? '*.bigcommerce.com'
+        protocol: 'https',
+        hostname: process.env.BIGCOMMERCE_CDN_HOSTNAME ?? '*.bigcommerce.com',
+        port: '',
+        pathname: '/**/*',
       }
     ]
   },
@@ -24,3 +25,5 @@ module.exports = {
     ];
   }
 };
+
+export default config;
