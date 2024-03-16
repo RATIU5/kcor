@@ -1,3 +1,5 @@
+import Footer from '@/components/shared/footer';
+import Header from '@/components/shared/header';
 import Loading from '@/components/ui/loading';
 import { env } from '@/lib/env';
 import { GeistSans } from 'geist/font/sans';
@@ -26,10 +28,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <body className="w-screnn h-screen bg-neutral-50 text-black selection:bg-blue-300">
+      <body className="flex h-screen w-screen flex-col bg-neutral-50 text-black selection:bg-blue-300">
+        <Header />
         <Suspense fallback={<Loading />}>
           <main className="h-full w-full">{children}</main>
         </Suspense>
+        <Footer />
       </body>
     </html>
   );
