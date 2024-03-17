@@ -5,5 +5,7 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on"
 }

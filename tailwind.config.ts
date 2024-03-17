@@ -8,19 +8,22 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
       },
+      transitionProperty: {
+        width: 'width',
+      },
       keyframes: {
         fadeIn: {
-          from: {opacity: 0},
-          to: {opacity: 1},
+          from: { opacity: 0 },
+          to: { opacity: 1 },
         },
         marquee: {
-          '0%': {transform: 'translateX(0%)'},
-          '100%': {transform: 'translateX(-100%)'},
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
         blink: {
-          '0%': {opacity: 0.2},
-          '20%': {opacity: 1},
-          '100% ': {opacity: 0.2},
+          '0%': { opacity: 0.2 },
+          '20%': { opacity: 1 },
+          '100% ': { opacity: 0.2 },
         },
       },
       animation: {
@@ -36,7 +39,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/container-queries'),
     require('@tailwindcss/typography'),
-    plugin(({matchUtilities, theme}) => {
+    plugin(({ matchUtilities, theme }) => {
       matchUtilities(
         {
           'animation-delay': (value) => {
