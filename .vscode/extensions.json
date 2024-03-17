@@ -3,6 +3,7 @@
     "aaron-bond.better-comments",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "million.million-lint"
   ]
 }
