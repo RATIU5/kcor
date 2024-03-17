@@ -32,7 +32,7 @@ export default function ResponsiveMenu(props: ResponsiveMenuProps) {
         <div className="hidden lg:block">
           <Links isMobileOpen={true} />
         </div>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center lg:gap-4">
           <SearchInput className="hidden lg:m-0 lg:flex" />
           <Button className="h-10 w-10 p-2 text-neutral-600">
             <IconBag />
@@ -44,7 +44,7 @@ export default function ResponsiveMenu(props: ResponsiveMenuProps) {
       <div
         tabIndex={-1}
         className={cn(
-          'pointer-events-none absolute z-0 h-[calc(100vh-62px)] w-screen bg-neutral-50 px-4 pt-4 opacity-0 transition-all duration-300 lg:hidden',
+          'pointer-events-none absolute z-0 h-[calc(100vh-62px)] w-full bg-neutral-50 px-4 pt-4 opacity-0 transition-all duration-300 lg:hidden',
           {
             'opacity-100': isOpen,
             'z-20': isOpen,

@@ -25,7 +25,13 @@ export default function SearchInput(props: SearchInputProps) {
           id="searchInput"
           placeholder="Search products..."
           onChange={(e) => setQuery(encodeURIComponent(e.target.value))}
-          className="w-full outline-none transition-all duration-200 focus:mr-2 focus:w-auto lg:w-0"
+          className={cn(
+            'w-full outline-none transition-all duration-200 lg:w-0 lg:focus:mr-2 lg:focus:w-auto',
+            {
+              'lg:w-full': query.length > 0,
+              'lg:mr-2': query.length > 0,
+            },
+          )}
         />
         <IconSearch className="h-5 w-5 text-neutral-600" />
       </label>

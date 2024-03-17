@@ -29,6 +29,11 @@ export default function Links(props: LinksProps) {
           Toppers
         </Link>
       </li>
+      <li>
+        <Link href="/pillows" tabIndex={props.isMobileOpen ? 0 : -1}>
+          Pillows
+        </Link>
+      </li>
     </ul>
   );
 }
