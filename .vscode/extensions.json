@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
-    "million.million-lint"
+    "million.million-lint",
+    "moalamri.inline-fold"
   ]
 }
