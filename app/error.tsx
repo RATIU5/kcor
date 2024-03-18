@@ -2,7 +2,7 @@
 
 import Section from '@/components/ui/section';
 
-export default function Error(props: { reset: () => void }) {
+export default function ErrorPage(props: { readonly reset: () => void }) {
   const { reset } = props;
   return (
     <Section className="h-full items-center justify-center">

@@ -5,6 +5,6 @@
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "million.million-lint",
-    "moalamri.inline-fold"
+    "SonarSource.sonarlint-vscode"
   ]
 }

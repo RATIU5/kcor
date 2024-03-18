@@ -1,7 +1,7 @@
 'use client';
 
 import { IconBag, IconClose, IconMenu } from '@/components/icons';
-import Button from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import React from 'react';
 import Links from './links';
@@ -17,13 +17,14 @@ export default function ResponsiveMenu(props: ResponsiveMenuProps) {
 
   return (
     <>
-      <div className="sticky z-10 flex items-center justify-between border-b-2 border-solid border-neutral-200 bg-neutral-50 p-4">
-        <button
+      <div className="sticky z-10 flex items-center justify-between bg-neutral-50 p-4">
+        <Button
+          variant="ghost"
           onClick={() => setIsOpen((prev) => !prev)}
           className="block lg:hidden"
         >
           {isOpen ? <IconClose /> : <IconMenu />}
-        </button>
+        </Button>
         <div>
           <a href="/" className="text-xl">
             {storeName}
@@ -34,7 +35,7 @@ export default function ResponsiveMenu(props: ResponsiveMenuProps) {
         </div>
         <div className="flex items-center justify-center lg:gap-4">
           <SearchInput className="hidden lg:m-0 lg:flex" />
-          <Button className="h-10 w-10 p-2 text-neutral-600">
+          <Button variant="default">
             <IconBag />
           </Button>
         </div>

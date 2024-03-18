@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kcor Theme
 
-## Getting Started
+## Altering the Theme
 
-First, run the development server:
+Here are some guides to help you alter the theme.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Changing the default color scheme
+
+### Changing the Default Font Family
+
+For a full guide to changing fonts in Next.js, check out [the official documentaion](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) for changing font families. If you want a shorter guide, below are some quick rundowns to help you get started.
+
+#### Use the default TailwindCSS font families
+
+To use the default TailwindCSS font families, you can simply use the below configuration or remove the `fontFamily` property from the `extend` object.
+
+```js
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: [...fontFamily.sans],
+        serif: [...fontFamily.serif],
+      },
+    },
+  },
+  // ...
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Use custom local font families
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Make sure to install `@next/font` if it's not already installed (check `@/package.json`):
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+pnpm add @next/font
+```
 
-## Learn More
+Then, download the font files you want to use and place them in the `@/fonts` directory. You will then need to import `next/font/local` as well as the font file inside the `@/app/layout.tsx` (or another layout) file.
 
-To learn more about Next.js, take a look at the following resources:
+```tsx
+import localFont from 'next/font/local';
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+// Setup the local font for use in the theme
+const myFont = localFont({
+  src: './fonts/my-font.woff2',
+  display: 'swap',
+  variable: '--font-my-font',
+});
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+// Then add the font variable to the root layout file in the html tag
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  return (
+    <html lang="en" className={myFont.variable}>
+      {/* ... */}
+    </html>
+  );
+}
+```
 
-## Deploy on Vercel
+Then, you can use the font variable in the `@/tailwind.config.js` file:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```js
+const { fontFamily } = require('tailwindcss/defaultTheme');
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-my-font)', ...fontFamily.sans], // must match the variable name from the layout file
+      },
+    },
+  },
+  // ...
+};
+```
+
+#### Use Google Fonts
+
+Make sure to install `@next/font` if it's not already installed (check `@/package.json`):
+
+```bash
+pnpm add @next/font
+```
+
+Then, find some Google fonts to use and import them from `next/font/google` inside the `@/app/layout.tsx` (or another layout) file, like so:
+
+```tsx
+import { Inter } from 'next/font/google';
+
+// Setup the Google font for use in the theme
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+// Then add the font variable to the root layout file in the html tag
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  return (
+    <html lang="en" className={inter.variable}>
+      {/* ... */}
+    </html>
+  );
+}
+```
+
+Then, you can use the font variable in the `@/tailwind.config.js` file:
+
+```js
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', ...fontFamily.sans], // must match the variable name from the layout file
+      },
+    },
+  },
+  // ...
+};
+```
