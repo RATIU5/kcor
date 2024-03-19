@@ -41,6 +41,8 @@ export default function HomeCarousel() {
             linkHref="/mattresses"
             image="https://cdn11.bigcommerce.com/s-g5ubotok03/images/stencil/original/image-manager/category-bedding-split.jpeg?t=1678209805"
             imageAlt="A woman and a dog laying on top of a bed"
+            imageWidth="600"
+            imageHeight="400"
           />
           <Slide
             ariaHidden={selectedIndex !== 1}
@@ -49,6 +51,8 @@ export default function HomeCarousel() {
             linkText="Shop Now"
             linkHref="/bed-frames"
             image="https://cdn11.bigcommerce.com/s-g5ubotok03/images/stencil/original/image-manager/blog-hero-img.png?t=1676937187"
+            imageWidth="600"
+            imageHeight="400"
             imageAlt="A mother laying on a bed lifting her child"
           />
           <Slide
@@ -58,6 +62,8 @@ export default function HomeCarousel() {
             linkText="Shop Now"
             linkHref="/pillows"
             image="https://cdn11.bigcommerce.com/s-g5ubotok03/images/stencil/original/image-manager/category-accessories-split.jpeg?t=1678209804"
+            imageWidth="600"
+            imageHeight="400"
             imageAlt="Two children and a dog running down the hallway"
           />
         </div>
@@ -91,6 +97,8 @@ export type SlideProps = {
   image: string;
   imageAlt: string;
   ariaHidden: boolean;
+  imageWidth?: number | `${number}` | undefined;
+  imageHeight?: number | `${number}` | undefined;
 };
 
 function Slide(props: Readonly<SlideProps>) {
@@ -115,8 +123,8 @@ function Slide(props: Readonly<SlideProps>) {
           src={props.image}
           alt={props.imageAlt}
           className="overflow-hidden rounded-lg"
-          width="1150"
-          height="766"
+          width={props.imageWidth || '600'}
+          height={props.imageHeight || '400'}
         />
       </div>
     </div>
