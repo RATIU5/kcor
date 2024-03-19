@@ -27,9 +27,10 @@ export default function HomeCarousel() {
     <div className="relative my-16 flex w-full pb-8">
       <Button
         className="absolute bottom-0 left-0 ml-4 md:ml-8"
+        size="icon"
         onClick={scrollPrev}
       >
-        <IconChevronLeft />
+        <IconChevronLeft title="Left Arrow" />
       </Button>
       <div className="w-full overflow-hidden" ref={emblaRef}>
         <div className="flex">
@@ -68,6 +69,13 @@ export default function HomeCarousel() {
           />
         </div>
       </div>
+      <Button
+        className="absolute bottom-0 right-0 mr-4 md:mr-8"
+        size="icon"
+        onClick={scrollNext}
+      >
+        <IconChevronRight title="Right Arrow" />
+      </Button>
       <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 gap-1">
         {scrollSnaps.map((_, index) => (
           <DotButton
@@ -79,12 +87,6 @@ export default function HomeCarousel() {
           />
         ))}
       </div>
-      <Button
-        className="absolute bottom-0 right-0 mr-4 md:mr-8"
-        onClick={scrollNext}
-      >
-        <IconChevronRight />
-      </Button>
     </div>
   );
 }

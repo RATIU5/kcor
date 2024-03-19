@@ -1,15 +1,16 @@
-export type IconProps = {
-  strokeWeight?: number;
-  className?: string;
-};
+export interface IconProps extends React.SVGProps<SVGSVGElement> {
+  title: string;
+}
 
 export const IconSpinner = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       className={props.className}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
+      {...restProps}
     >
       <circle
         className="opacity-25"
@@ -17,7 +18,7 @@ export const IconSpinner = (props: IconProps) => {
         cy="12"
         r="10"
         stroke="currentColor"
-        strokeWidth={props.strokeWeight || 4}
+        strokeWidth={strokeWidth || 4}
       ></circle>
       <path
         className="opacity-75"
@@ -29,6 +30,7 @@ export const IconSpinner = (props: IconProps) => {
 };
 
 export const IconBag = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -37,10 +39,11 @@ export const IconBag = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={props.strokeWeight || 2}
+      strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={props.className}
+      className={className}
+      {...restProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z" />
@@ -50,6 +53,7 @@ export const IconBag = (props: IconProps) => {
 };
 
 export const IconSearch = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -58,10 +62,11 @@ export const IconSearch = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={props.strokeWeight || 2}
+      strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={props.className}
+      className={className}
+      {...restProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -71,6 +76,7 @@ export const IconSearch = (props: IconProps) => {
 };
 
 export const IconMenu = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -79,10 +85,11 @@ export const IconMenu = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={props.strokeWeight || 2}
+      strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={props.className}
+      className={className}
+      {...restProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M4 8l16 0" />
@@ -92,6 +99,7 @@ export const IconMenu = (props: IconProps) => {
 };
 
 export const IconClose = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -100,10 +108,11 @@ export const IconClose = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={props.strokeWeight || 2}
+      strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={props.className}
+      className={className}
+      {...restProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />
@@ -113,6 +122,7 @@ export const IconClose = (props: IconProps) => {
 };
 
 export const IconChevronLeft = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -121,10 +131,11 @@ export const IconChevronLeft = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={props.strokeWeight || 2}
+      strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={props.className}
+      className={className}
+      {...restProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M15 6l-6 6l6 6" />
@@ -133,6 +144,7 @@ export const IconChevronLeft = (props: IconProps) => {
 };
 
 export const IconChevronRight = (props: IconProps) => {
+  const { className, strokeWidth, ...restProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -141,10 +153,11 @@ export const IconChevronRight = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={props.strokeWeight || 2}
+      strokeWidth={strokeWidth || 2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={props.className}
+      className={className}
+      {...restProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M9 6l6 6l-6 6" />

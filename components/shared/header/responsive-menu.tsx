@@ -1,42 +1,47 @@
 'use client';
 
-import { IconBag, IconClose, IconMenu } from '@/components/icons';
+import { IconBag, IconClose, IconMenu, IconSearch } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import React from 'react';
 import Links from './links';
-import SearchInput from './search-input';
 
 export type ResponsiveMenuProps = {
   storeName: React.ReactNode;
 };
 
-export default function ResponsiveMenu(props: ResponsiveMenuProps) {
-  const { storeName } = props;
+export default function ResponsiveMenu(props: Readonly<ResponsiveMenuProps>) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <>
-      <div className="sticky z-10 flex items-center justify-between bg-neutral-50 p-4">
+      <div className="sticky top-0 z-10 flex items-center justify-between bg-neutral-50 p-4">
         <Button
           variant="ghost"
+          size="icon"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="block lg:hidden"
+          className="flex lg:hidden "
         >
-          {isOpen ? <IconClose /> : <IconMenu />}
+          {isOpen ? (
+            <IconClose title="Close Menu" />
+          ) : (
+            <IconMenu title="Open Menu" />
+          )}
         </Button>
         <div>
           <a href="/" className="text-xl">
-            {storeName}
+            {props.storeName}
           </a>
         </div>
         <div className="hidden lg:block">
           <Links isMobileOpen={true} />
         </div>
         <div className="flex items-center justify-center lg:gap-4">
-          <SearchInput className="hidden lg:m-0 lg:flex" />
-          <Button variant="default">
-            <IconBag />
+          <Button size="icon" variant="secondary" className="hidden lg:flex">
+            <IconSearch title="Search the site" />
+          </Button>
+          <Button size="icon">
+            <IconBag title="Shopping Bag" />
           </Button>
         </div>
       </div>
@@ -53,7 +58,9 @@ export default function ResponsiveMenu(props: ResponsiveMenuProps) {
           },
         )}
       >
-        <SearchInput tabIndex={isOpen ? 0 : -1} />
+        <Button size="icon">
+          <IconSearch title="Search the site" />
+        </Button>
         <Links isMobileOpen={isOpen} />
       </div>
     </>

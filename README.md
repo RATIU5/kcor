@@ -11,7 +11,6 @@ This theme is made up of:
 - [shadcn/ui](https://ui.shadcn.com/) - A collection of accessible and customizable UI components
 - [Radix Primitives](https://www.radix-ui.com/primitives) - A collection of low-level UI primitives (used by `@shadcn/ui`)
 - [Embla Carousel](https://www.embla-carousel.com/) - A modern carousel library (used by `@shadcn/ui`)
-- [MillionLint](https://million.dev/lint) - A React performance linter
 - [BigCommerce](https://www.bigcommerce.com/) - The e-commerce platform used to power the theme
 - [Strapi](https://strapi.io/) - The headless CMS used to manage content
 
@@ -67,8 +66,8 @@ For a more in-depth look at the project structure, check out the [Next.js docume
 │   ├── global.css      # Global CSS and theme colors
 │   └── ...             # File-based routing, layout, and other app files
 ├── components/
-│   ├── ui/             # reusable UI components
-│   └── ...             # Other single-use components
+│   ├── ui/             # Reusable UI components
+│   └── ...             # Single-use components
 ├── fonts/              # Local font files
 ├── lib/                # Core/utility functions
 ├── public/             # Public files (images, etc.)

@@ -1,38 +1,36 @@
-'use client';
-
-import Link from '@/components/ui/link';
+import { Button } from '@/components/ui/button';
 
 export type LinksProps = {
   isMobileOpen: boolean;
 };
 
-export default function Links(props: LinksProps) {
+export default function Links(props: Readonly<LinksProps>) {
   return (
     <ul className="flex flex-col gap-8 text-2xl uppercase lg:flex-row lg:gap-6 lg:text-base">
       <li>
-        <Link href="/mattresses" tabIndex={props.isMobileOpen ? 0 : -1}>
-          Mattresses
-        </Link>
+        <Button asChild tabIndex={props.isMobileOpen ? 0 : -1} variant="link">
+          <a href="/mattresses">Mattresses</a>
+        </Button>
       </li>
       <li>
-        <Link href="/bed-frames" tabIndex={props.isMobileOpen ? 0 : -1}>
-          Bed&nbsp;Frames
-        </Link>
+        <Button asChild tabIndex={props.isMobileOpen ? 0 : -1} variant="link">
+          <a href="/bed-frames">Bed&nbsp;Frames</a>
+        </Button>
       </li>
       <li>
-        <Link href="/headboards" tabIndex={props.isMobileOpen ? 0 : -1}>
-          Headboards
-        </Link>
+        <Button asChild tabIndex={props.isMobileOpen ? 0 : -1} variant="link">
+          <a href="/headboards">Headboards</a>
+        </Button>
       </li>
       <li>
-        <Link href="/toppers" tabIndex={props.isMobileOpen ? 0 : -1}>
-          Toppers
-        </Link>
+        <Button asChild tabIndex={props.isMobileOpen ? 0 : -1} variant="link">
+          <a href="/toppers">Toppers</a>
+        </Button>
       </li>
       <li>
-        <Link href="/pillows" tabIndex={props.isMobileOpen ? 0 : -1}>
-          Pillows
-        </Link>
+        <Button asChild tabIndex={props.isMobileOpen ? 0 : -1} variant="link">
+          <a href="/pillows">Pillows</a>
+        </Button>
       </li>
     </ul>
   );
