@@ -18,17 +18,19 @@ Other libraries not mentioned are used to enhance the developer experience and a
 
 ## Appendix
 
-- [Getting Started](#getting-started)
-  - [Install Dependencies](#install-dependencies)
-  - [Start the Development Server](#start-the-development-server)
-- [Project Structure](#project-structure)
-- [Modifying the Theme](#modifying-the-theme)
-  - [How Do I Change the Theme Colors?](#how-do-i-change-the-theme-colors)
-  - [How Do I Add New Theme Colors?](#how-do-i-add-new-theme-colors)
-  - [What Colors Do I Use For My Component?](#what-colors-do-i-use-for-my-component)
-  - [Are There Any Existing Components I Can Use?](#are-there-any-existing-components-i-can-use)
-  - [How Do I Install Local Fonts?](#how-do-i-install-local-fonts)
-  - [How Do I Install Google Fonts?](#how-do-i-install-google-fonts)
+- [Kcor Theme](#kcor-theme)
+  - [Appendix](#appendix)
+  - [Getting Started](#getting-started)
+    - [Install Dependencies](#install-dependencies)
+    - [Start the Development Server](#start-the-development-server)
+  - [Project Structure](#project-structure)
+  - [Modifying the Theme](#modifying-the-theme)
+    - [How Do I Change the Theme Colors?](#how-do-i-change-the-theme-colors)
+    - [How Do I Add New Theme Colors?](#how-do-i-add-new-theme-colors)
+    - [What Colors Do I Use For My Component?](#what-colors-do-i-use-for-my-component)
+    - [Are There Any Existing Components I Can Use?](#are-there-any-existing-components-i-can-use)
+    - [How Do I Install Local Fonts?](#how-do-i-install-local-fonts)
+    - [How Do I Install Google Fonts?](#how-do-i-install-google-fonts)
 
 ## Getting Started
 
@@ -88,8 +90,8 @@ There are two main colors for components: `background` and `foreground`. The `ba
 ```css
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 0 0% 100%; /* colors MUST be hsl values */
+    --foreground: 0 0% 3.9%; /* colors MUST be hsl values */
   }
   /* ... */
 }

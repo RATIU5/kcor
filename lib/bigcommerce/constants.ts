@@ -1,4 +1,4 @@
-import {env} from '@/lib/env';
+import { env } from '@/lib/env';
 
 export const BIGCOMMERCE_API_URL =
   env.BIGCOMMERCE_API_URL ?? 'https://api.bigcommerce.com';

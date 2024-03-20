@@ -1,4 +1,3 @@
-import Footer from '@/components/shared/footer';
 import Header from '@/components/shared/header';
 import Loading from '@/components/ui/loading';
 import { env } from '@/lib/env';
@@ -34,7 +33,7 @@ export default async function RootLayout({
         <Suspense fallback={<Loading />}>
           <main className="h-full w-full">{children}</main>
         </Suspense>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

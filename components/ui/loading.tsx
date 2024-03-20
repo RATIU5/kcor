@@ -1,4 +1,4 @@
-import {IconSpinner} from '@/components/icons';
+import { IconSpinner } from '@/components/icons';
 
 export default function Loading() {
   return (

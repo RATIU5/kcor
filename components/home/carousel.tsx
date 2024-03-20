@@ -111,13 +111,15 @@ function Slide(props: Readonly<SlideProps>) {
           {props.title}
         </h2>
         <p aria-hidden={props.ariaHidden}>{props.description}</p>
-        <a
-          href={props.linkHref}
-          aria-hidden={props.ariaHidden}
-          tabIndex={props.ariaHidden ? -1 : undefined}
-        >
-          {props.linkText}
-        </a>
+        <Button asChild>
+          <a
+            href={props.linkHref}
+            aria-hidden={props.ariaHidden}
+            tabIndex={props.ariaHidden ? -1 : undefined}
+          >
+            {props.linkText}
+          </a>
+        </Button>
       </div>
       <div className="mx-auto max-w-[600px] lg:mx-0 lg:mr-auto">
         <Image

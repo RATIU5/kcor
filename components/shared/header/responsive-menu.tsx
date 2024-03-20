@@ -37,7 +37,7 @@ export default function ResponsiveMenu(props: Readonly<ResponsiveMenuProps>) {
           <Links isMobileOpen={true} />
         </div>
         <div className="flex items-center justify-center lg:gap-4">
-          <Button size="icon" variant="secondary" className="hidden lg:flex">
+          <Button size="icon" variant="ghost" className="hidden lg:flex">
             <IconSearch title="Search the site" />
           </Button>
           <Button size="icon">
