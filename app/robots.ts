@@ -1,4 +1,4 @@
-import {MetadataRoute} from 'next';
+import { MetadataRoute } from 'next';
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
