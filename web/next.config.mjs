@@ -1,4 +1,3 @@
-import MillionLint from '@million/lint';
 /** @type {import('next').NextConfig} */
 const config = {
   eslint: {
@@ -32,6 +31,4 @@ const config = {
     ];
   },
 };
-export default MillionLint.next({
-  rsc: true,
-})(config);
+export default config;

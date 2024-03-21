@@ -18,7 +18,7 @@ export const IconSpinner = (props: IconProps) => {
         cy="12"
         r="10"
         stroke="currentColor"
-        strokeWidth={strokeWidth || 4}
+        strokeWidth={strokeWidth ?? 4}
       ></circle>
       <path
         className="opacity-75"
@@ -39,7 +39,7 @@ export const IconBag = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={strokeWidth || 2}
+      strokeWidth={strokeWidth ?? 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -62,7 +62,7 @@ export const IconSearch = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={strokeWidth || 2}
+      strokeWidth={strokeWidth ?? 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -85,7 +85,7 @@ export const IconMenu = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={strokeWidth || 2}
+      strokeWidth={strokeWidth ?? 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -108,7 +108,7 @@ export const IconClose = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={strokeWidth || 2}
+      strokeWidth={strokeWidth ?? 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -131,7 +131,7 @@ export const IconChevronLeft = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={strokeWidth || 2}
+      strokeWidth={strokeWidth ?? 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -153,7 +153,7 @@ export const IconChevronRight = (props: IconProps) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={strokeWidth || 2}
+      strokeWidth={strokeWidth ?? 2}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
