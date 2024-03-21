@@ -2,7 +2,7 @@ import { Button } from '../ui/button';
 
 export default function HomeHero() {
   return (
-    <div className="heroContainer mx-auto flex h-[600px] w-full max-w-[1800px] overflow-hidden rounded-3xl bg-hero bg-cover bg-center bg-no-repeat 2xl:h-[700px] 2xl:items-end">
+    <div className="heroContainer bg-hero mx-auto flex h-[600px] w-full max-w-[1800px] overflow-hidden rounded-3xl bg-cover bg-center bg-no-repeat 2xl:h-[700px] 2xl:items-end">
       <div className="hero-image-filter absolute left-0 top-0 h-full w-full"></div>
       <div className="hero-content-copy flex w-full flex-col justify-around px-4 md:px-14 md:py-10 2xl:px-40 2xl:pb-16">
         <div className="hero-text flex h-60 flex-col 2xl:h-48 2xl:justify-between">
