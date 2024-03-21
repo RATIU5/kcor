@@ -28,6 +28,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_VERCEL_URL: z.string(),
+    NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: z.string(),
   },
 
   /**
@@ -50,6 +51,8 @@ export const env = createEnv({
     STRAPI_API_URL: process.env.STRAPI_API_URL,
     STRAPI_API_TOKEN: process.env.STRAPI_API_TOKEN,
     NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
+    NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET:
+      process.env.NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   /**

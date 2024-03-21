@@ -1,0 +1,96 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: web
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      target: dev
+    command: yarn dev
+    env_file: .env
+    environment:
+      NODE_ENV: ${NODE_ENV} 
+      BIGCOMMERCE_CANONICAL_STORE_DOMAIN: ${BIGCOMMERCE_CANONICAL_STORE_DOMAIN}
+      BIGCOMMERCE_API_URL: ${BIGCOMMERCE_API_URL}
+      BIGCOMMERCE_CDN_HOSTNAME: ${BIGCOMMERCE_CDN_HOSTNAME}
+      COMPANY_NAME: ${COMPANY_NAME}
+      SITE_NAME: ${SITE_NAME}
+      BIGCOMMERCE_STORE_HASH: ${BIGCOMMERCE_STORE_HASH}
+      BIGCOMMERCE_CHANNEL_ID: ${BIGCOMMERCE_CHANNEL_ID}
+      BIGCOMMERCE_ACCESS_TOKEN: ${BIGCOMMERCE_ACCESS_TOKEN}
+      BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN: ${BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}
+      STRAPI_API_URL: ${STRAPI_API_URL}
+      STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
+      NEXT_PUBLIC_VERCEL_URL: ${NEXT_PUBLIC_VERCEL_URL}
+      NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
+
+    volumes:
+      - ./web:/app
+      - ./web/node_modules:/app/node_modules
+      - ./web/.next:/app/.next
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - strapi
+    networks:
+      - strapi
+
+  strapi:
+    container_name: strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    hostname: strapi
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: strapiDB
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+    volumes:
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/package.json
+      - ./strapi/yarn.lock:/opt/yarn.lock
+      - ./strapi/public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    depends_on:
+      - strapiDB
+
+  strapiDB:
+    container_name: strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: .env
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/ #using a volume
+      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+    ports:
+      - "5432:5432"
+    networks:
+      - strapi
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
