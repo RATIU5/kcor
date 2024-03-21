@@ -35,7 +35,7 @@ type CardProps = {
 function Card(props: CardProps) {
   return (
     <div
-      className="card h-[400px] w-full max-w-md rounded-3xl bg-cover bg-center md:max-w-sm lg:h-[500px]"
+      className="card h-[400px] w-full max-w-md rounded-3xl bg-cover bg-center md:max-w-[30rem] lg:h-[500px]"
       style={{
         backgroundImage: `linear-gradient(191deg, rgba(0, 0, 0, 0.35) 7.65%, rgba(0, 0, 0, 0.35) 83.33%), url(${props.image})`,
       }}
