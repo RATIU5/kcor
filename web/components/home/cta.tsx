@@ -4,7 +4,7 @@ import { Button } from '../ui/button';
 export default function CTA() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
-      <div className="cta-img-container relative h-[150px] w-full overflow-hidden rounded-3xl sm:h-[200px] md:h-[250px] 2xl:h-[400px]">
+      <div className="cta-img-container relative h-[150px] w-full max-w-[1800px] overflow-hidden rounded-3xl sm:h-[200px] md:h-[250px] 2xl:h-[400px]">
         <Image
           className="image-container object-cover"
           src="https://images.unsplash.com/photo-1688384452844-8364c3e2fc28?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
