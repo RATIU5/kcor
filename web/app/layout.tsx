@@ -1,3 +1,4 @@
+import Footer from '@/components/shared/footer';
 import Header from '@/components/shared/header';
 import Loading from '@/components/ui/loading';
 import { env } from '@/lib/env';
@@ -27,13 +28,13 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(GeistSans.variable, 'h-full')}>
-      <body className="flex h-full w-full flex-col bg-neutral-50 text-neutral-800 selection:bg-blue-300">
+    <html lang="en" className={cn(GeistSans.variable)}>
+      <body className="flex w-full flex-col bg-neutral-50 text-neutral-800 selection:bg-blue-300">
         <Header />
         <Suspense fallback={<Loading />}>
           <main className="h-full w-full">{children}</main>
         </Suspense>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
