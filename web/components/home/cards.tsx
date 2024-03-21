@@ -67,7 +67,7 @@ function Card(props: CardProps) {
 =======
 }
 
-function Card(props:CardProps) {
+function Card(props: CardProps) {
   return (
     <div className="card w-full h-[400px] rounded-3xl bg-cover bg-center max-w-md md:max-w-sm lg:h-[500px]" style={{ backgroundImage: `linear-gradient(191deg, rgba(0, 0, 0, 0.35) 7.65%, rgba(0, 0, 0, 0.35) 83.33%), url(${props.image})` }}>
       <div className="content-container flex flex-col justify-end items-start h-full pb-5 pl-5">
