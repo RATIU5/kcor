@@ -1,4 +1,6 @@
-.vercel
-.next
-pnpm-lock.yaml
-node_modules
+**/.vercel
+**/.next
+**/yarn.lock
+**/node_modules
+# Don't prettify strapi
+/strapi 

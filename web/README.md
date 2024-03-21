@@ -38,16 +38,16 @@ To get started modifying the theme, you will need to install the dependencies an
 
 ### Install Dependencies
 
-To install the dependencies, you can use `pnpm` to install the dependencies. If you don't have `pnpm` installed, you can install it by running the following command:
+To install the dependencies, you can use `yarn` to install the dependencies. If you don't have `yarn` installed, you can install it by running the following command:
 
 ```bash
-npm install -g pnpm
+npm install -g yarn
 ```
 
 Then, you can install the dependencies by running the following command:
 
 ```bash
-pnpm install
+yarn install
 ```
 
 ### Start the Development Server
@@ -55,7 +55,7 @@ pnpm install
 To start the development server, you can run the following command:
 
 ```bash
-pnpm dev
+yarn dev
 ```
 
 ## Project Structure
@@ -181,7 +181,7 @@ Check out [the official Next.js documentaion](https://nextjs.org/docs/app/buildi
 Make sure to install `@next/font` if it's not already installed (check `@/package.json`):
 
 ```bash
-pnpm add @next/font
+yarn add @next/font
 ```
 
 Then, download the font files you want to use and place them in the `@/fonts` directory. You will then need to import `next/font/local` as well as the font file inside the `@/app/layout.tsx` (or another layout) file.
@@ -234,7 +234,7 @@ Check out [the official Next.js documentaion](https://nextjs.org/docs/app/buildi
 Make sure to install `@next/font` if it's not already installed (check `@/package.json`):
 
 ```bash
-pnpm add @next/font
+yarn add @next/font
 ```
 
 Then, find some Google fonts to use and import them from `next/font/google` inside the `@/app/layout.tsx` (or another layout) file, like so:
