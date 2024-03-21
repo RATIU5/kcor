@@ -10,4 +10,4 @@
 
 1. Clone the repository
 2. Check out a new branch
-3. Run `docker compose up -f "docker-compose.dev.yml" -d`to start the environment
+3. Run `docker compose -f "docker-compose.dev.yml" up -d`to start the environment
