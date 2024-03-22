@@ -6,7 +6,6 @@ services:
     build:
       context: ./web
       dockerfile: dev.Dockerfile
-
     env_file: .env
     environment:
       NODE_ENV: development
@@ -23,7 +22,6 @@ services:
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
       NEXT_PUBLIC_VERCEL_URL: ${NEXT_PUBLIC_VERCEL_URL}
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
-
     volumes:
       - ./web:/app
       - ./web/node_modules:/app/node_modules
@@ -31,40 +29,29 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - strapi
+      - payload
     networks:
-      - strapi
+      - postgresNet
 
-  strapi:
-    container_name: strapi
+  payload:
+    container_name: payload
     build:
-      context: ./strapi
+      context: ./payload
       dockerfile: Dockerfile
-    restart: unless-stopped
-    hostname: strapi
     env_file: .env
     environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: postgres
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      NODE_ENV: production
-    volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/package.json
-      - ./strapi/public/uploads:/opt/app/public/uploads
+      PORT: ${PAYLOAD_PORT}
+      DATABASE_URI: ${PAYLOAD_URI}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
     ports:
-      - "1337:1337"
-    networks:
-      - strapi
+      - '3300:3300'
+    volumes:
+      - ./payload:/app
+      - ./payload/node_modules:/app/node_modules
     depends_on:
       - postgres
+    networks:
+      - postgresNet
 
   postgres:
     container_name: postgres
@@ -72,23 +59,23 @@ services:
     restart: unless-stopped
     env_file: .env
     image: postgres:16-alpine
-    hostname: postgres
+    hostname: postgresDB
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
+      - payload-data:/var/lib/postgresql/data/ #using a volume
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
     ports:
       - "5432:5432"
     networks:
-      - strapi
+      - postgresNet
 
 volumes:
-  strapi-data:
+  payload-data:
 
 networks:
-  strapi:
-    name: Strapi
+  postgresNet:
+    name: Payload Postgres 
     driver: bridge
