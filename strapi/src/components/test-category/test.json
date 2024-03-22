@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_test_category_tests",
+  "info": {
+    "displayName": "Test",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "SomeValue": {
+      "type": "string"
+    },
+    "Visible": {
+      "type": "boolean"
+    }
+  }
+}
