@@ -25,7 +25,7 @@ services:
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
 
     volumes:
-      - ./web/src:/app/src
+      - ./web:/app
       - ./web/public:/app/public
       - ${PWD}/web/tailwind.config.ts:/app/tailwind.config.ts
     restart: always
