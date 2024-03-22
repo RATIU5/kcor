@@ -47,6 +47,7 @@ services:
       - '3300:3300'
     volumes:
       - ./payload:/app
+      - ./payload/dist:/app/dist
       - ./payload/node_modules:/app/node_modules
     depends_on:
       - postgres
