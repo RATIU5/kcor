@@ -52,7 +52,7 @@ export default function Footer() {
             <ul className="border-l-[1px] pl-8">
               <li className="mb-2">
                 <a href="/about">Our Story</a>
-                </li>
+              </li>
               <li className="mb-2">Careers</li>
               <li className="mb-2">Blog</li>
               <li className="mb-2">Media</li>
