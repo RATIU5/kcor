@@ -5,7 +5,8 @@ services:
     container_name: web
     build:
       context: ./web
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
+      target: dev
     env_file: .env
     environment:
       NODE_ENV: development
@@ -24,7 +25,7 @@ services:
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
     volumes:
       - ./web:/app
-      - ./web/node_modules:/app/node_modules
+      - /app/node_modules
     restart: always
     ports:
       - 3000:3000
@@ -35,9 +36,9 @@ services:
 
   payload:
     container_name: payload
-    build:
-      context: ./payload
-      dockerfile: Dockerfile
+    image: node:18-alpine
+    working_dir: /app/
+    command: sh -c "yarn install && yarn dev"
     env_file: .env
     environment:
       PORT: ${PAYLOAD_PORT}
@@ -47,8 +48,7 @@ services:
       - '3300:3300'
     volumes:
       - ./payload:/app
-      - ./payload/dist:/app/dist
-      - ./payload/node_modules:/app/node_modules
+      - /app/node_modules
     depends_on:
       - postgres
     networks:
