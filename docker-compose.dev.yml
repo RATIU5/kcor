@@ -1,10 +1,10 @@
 version: "3.8"
 
 services:
-  web:
-    container_name: web
+  next:
+    container_name: next
     build:
-      context: ./web
+      context: ./next
       dockerfile: Dockerfile
       target: dev
     env_file: .env
@@ -19,12 +19,12 @@ services:
       BIGCOMMERCE_CHANNEL_ID: ${BIGCOMMERCE_CHANNEL_ID}
       BIGCOMMERCE_ACCESS_TOKEN: ${BIGCOMMERCE_ACCESS_TOKEN}
       BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN: ${BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}
-      STRAPI_API_URL: ${STRAPI_API_URL}
-      STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
+      PAYLOAD_API_URL: ${PAYLOAD_API_URL}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       NEXT_PUBLIC_VERCEL_URL: ${NEXT_PUBLIC_VERCEL_URL}
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
     volumes:
-      - ./web:/app
+      - ./next:/app
       - /app/node_modules
     restart: always
     ports:
@@ -39,6 +39,7 @@ services:
     image: node:18-alpine
     working_dir: /app/
     command: sh -c "yarn install && yarn dev"
+    hostname: payload
     env_file: .env
     environment:
       PORT: ${PAYLOAD_PORT}

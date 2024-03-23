@@ -1,10 +1,12 @@
 **/node_modules/
 **/.next/
+**/build/
+**/dist/
+**/.vercel/
+payload/**/media/
 .env
-.env.dev
-.env.prod
 
-.DS_Store
+**/.DS_Store
 *.pem
 
 # debug
@@ -21,6 +23,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Env files
-.env
