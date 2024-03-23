@@ -24,7 +24,7 @@ RUN npm ci --only=production && npm cache clean --force
 FROM base as dev-deps
 
 COPY --chown=node:node package*.json ./
-RUN npm i && npm cache clean --force
+RUN npm ci && npm cache clean --force
 
 FROM base as dev-source
 
@@ -76,20 +76,18 @@ ENV STRAPI_API_URL=${STRAPI_API_URL}
 ENV STRAPI_API_TOKEN=${STRAPI_API_TOKEN}
 ENV NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET=${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
 
+USER node
 RUN npm run build
 
-FROM base as prod-runner
+FROM prod-deps as prod-runner
 
-# Set user to non-root for security
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-USER nextjs
+USER node
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
 COPY --from=prod-builder /app/public ./public
-COPY --from=prod-builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=prod-builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=prod-builder --chown=nextjs:node /app/.next/standalone ./
+COPY --from=prod-builder --chown=nextjs:node /app/.next/static ./.next/static
 
 # Set runner arguments and environment variables
 ARG BIGCOMMERCE_CANONICAL_STORE_DOMAIN

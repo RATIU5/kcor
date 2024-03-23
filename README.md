@@ -24,7 +24,7 @@ cp .env.example .env
 2. Run the following command to start the docker containers:
 
 ```
-docker compose -f "docker-compose.dev.yml" up -d
+docker compose -f "docker-compose.dev.yml" up
 ```
 
 ## Deployment
@@ -38,5 +38,5 @@ docker compose -f "docker-compose.prod.yml" build
 2. Run the following command to start the production containers:
 
 ```
-docker compose -f "docker-compose.prod.yml" up -d
+docker compose -f "docker-compose.prod.yml" up
 ```
