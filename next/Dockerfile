@@ -46,7 +46,7 @@ FROM dev-source as dev
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["npm", "run", "dev"]
+CMD [ -d "node_modules" ] && npm run dev ||  npm ci && npm run dev
 
 FROM prod-source as prod-builder
 
