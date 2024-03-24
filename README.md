@@ -16,6 +16,11 @@ cp .env.example .env
 ```
 
 3. Fill out the `.env` file with the necessary information
+4. Run the following script to set up `node_modules` for Docker:
+
+```bash
+./rebuild_node_modules.sh
+```
 
 
 ## Development
@@ -40,3 +45,5 @@ docker compose -f "docker-compose.prod.yml" build
 ```
 docker compose -f "docker-compose.prod.yml" up
 ```
+
+## How do I ...?
