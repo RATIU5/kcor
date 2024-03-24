@@ -2,8 +2,6 @@
 
 ## Prerequisites
 
-- [Node.js 18+](https://nodejs.org/en/)
-- [Yarn 1.20+](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 
 ## Installation
@@ -47,3 +45,21 @@ docker compose -f "docker-compose.prod.yml" up
 ```
 
 ## How do I ...?
+
+### Install a New Dev Dependency
+
+If you want to install `express` to the `next` project, run the folowing command:
+
+```bash
+docker compose -f "docker-compose.dev.yml" run --rm next npm install express
+# ---------------------------------^-----------------^^---^^^^^^^^^^^^^^^^^-
+```
+
+### Install a New Production Dependency
+
+If you want to install `express` to the `next` project, run the folowing command:
+
+```bash
+docker compose -f "docker-compose.prod.yml" run --rm next npm install express
+# ---------------------------------^^-----------------^^---^^^^^^^^^^^^^^^^^-
+```
