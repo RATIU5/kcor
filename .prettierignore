@@ -1,6 +1,0 @@
-**/.vercel
-**/.next
-**/yarn.lock
-**/node_modules
-# Don't prettify strapi
-/strapi 

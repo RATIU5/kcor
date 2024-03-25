@@ -1,15 +1,15 @@
 version: "3.8"
 
 services:
-  web:
-    container_name: web
+  next:
+    container_name: next
     build:
-      context: ./web
+      context: ./next
       dockerfile: Dockerfile
-
+      target: prod-runner
     env_file: .env
     environment:
-      NODE_ENV: production
+      NODE_ENV: development
       BIGCOMMERCE_CANONICAL_STORE_DOMAIN: ${BIGCOMMERCE_CANONICAL_STORE_DOMAIN}
       BIGCOMMERCE_API_URL: ${BIGCOMMERCE_API_URL}
       BIGCOMMERCE_CDN_HOSTNAME: ${BIGCOMMERCE_CDN_HOSTNAME}
@@ -19,73 +19,52 @@ services:
       BIGCOMMERCE_CHANNEL_ID: ${BIGCOMMERCE_CHANNEL_ID}
       BIGCOMMERCE_ACCESS_TOKEN: ${BIGCOMMERCE_ACCESS_TOKEN}
       BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN: ${BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}
-      STRAPI_API_URL: ${STRAPI_API_URL}
-      STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
+      PAYLOAD_API_URL: ${PAYLOAD_API_URL}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       NEXT_PUBLIC_VERCEL_URL: ${NEXT_PUBLIC_VERCEL_URL}
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
-
     restart: always
     ports:
       - 3000:3000
     depends_on:
-      - strapi
+      - payload
     networks:
-      - strapi
+      - postgresNet
 
-  strapi:
-    container_name: strapi
-    build:
-      context: ./strapi
-      dockerfile: Dockerfile
-    restart: unless-stopped
+  payload:
+    container_name: payload
+    image: node:18-alpine
+    working_dir: /app/
+    command: sh -c "yarn install && yarn build && yarn serve"
     env_file: .env
     environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: strapiDB
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      NODE_ENV: production
-    volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/package.json
-      - ./strapi/yarn.lock:/opt/yarn.lock
-      - ./strapi/tsconfig.json:/opt/tsconfig.json
-      - ./strapi/public/uploads:/opt/app/public/uploads
+      PORT: ${PAYLOAD_PORT}
+      DATABASE_URI: ${PAYLOAD_URI}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
     ports:
-      - "1337:1337"
-    networks:
-      - strapi
+      - '3300:3300'
     depends_on:
-      - strapiDB
+      - postgres
+    networks:
+      - postgresNet
 
-  strapiDB:
-    container_name: strapiDB
+  postgres:
+    container_name: postgres
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
     env_file: .env
     image: postgres:16-alpine
+    hostname: postgresDB
     environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
-    volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
-      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     networks:
-      - strapi
-
-volumes:
-  strapi-data:
+      - postgresNet
 
 networks:
-  strapi:
-    name: Strapi
+  postgresNet:
+    name: Payload Postgres
     driver: bridge

@@ -1,0 +1,6 @@
+**/.vercel
+**/.next
+**/dist
+**/build
+**/yarn.lock
+**/node_modules
