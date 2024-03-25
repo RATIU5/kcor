@@ -105,8 +105,8 @@ export type SlideProps = {
 
 function Slide(props: Readonly<SlideProps>) {
   return (
-    <div className="flex min-w-0 flex-[0_0_100%] flex-col gap-8 px-4 md:px-8 lg:flex-row lg:justify-center">
-      <div className="mx-auto flex max-w-[600px] flex-col gap-4 lg:mx-0 lg:ml-auto lg:justify-center">
+    <div className="flex w-full min-w-0 max-w-[600px] flex-[0_0_100%] flex-col gap-8 px-4 md:px-8 xl:flex-[0_0_33%]">
+      <div className="mx-auto flex  flex-col gap-4 lg:mx-0 lg:justify-center">
         <h2 className="text-4xl font-semibold" aria-hidden={props.ariaHidden}>
           {props.title}
         </h2>
@@ -121,7 +121,7 @@ function Slide(props: Readonly<SlideProps>) {
           </a>
         </Button>
       </div>
-      <div className="mx-auto max-w-[600px] lg:mx-0 lg:mr-auto">
+      <div className="mx-auto lg:mx-0">
         <Image
           aria-hidden={props.ariaHidden}
           src={props.image}
