@@ -13,7 +13,10 @@ export default function Page() {
       <Section className="gap-16 bg-stone-300 md:px-14 2xl:px-40">
         <Logos />
       </Section>
-      <Section className="gap-16 bg-neutral-100 px-4 py-10 text-neutral-100 md:py-14 2xl:py-20">
+      <Section className="gap-16 bg-neutral-100 px-4 py-10 text-neutral-900 md:py-14 md:px-10 2xl:py-20">
+        <AboutGrid />
+      </Section>
+      <Section className="gap-16 bg-stone-300 px-4 py-10 text-neutral-100 md:py-14 2xl:py-20">
         <CTA />
       </Section>
       <Section className="gap-16 bg-neutral-100 px-4 py-10 text-neutral-100 md:py-14 2xl:py-20">
