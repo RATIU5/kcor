@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <div className="relative h-full w-full bg-neutral-800 px-4 py-10 text-neutral-50 md:px-10 md:py-14">
-      <div className="footer-container-of-containers mx-auto max-w-[1800px] 2xl:flex 2xl:justify-between 2xl:p-20">
+      <div className="footer-container-of-containers mx-auto max-w-[1448px] 2xl:flex 2xl:justify-between 2xl:p-20">
         <div className="footer-form-content-container">
           <h3 className="pb-4 text-center text-3xl font-bold  2xl:text-left">
             {storeName}
