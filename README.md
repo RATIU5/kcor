@@ -51,8 +51,8 @@ docker compose -f "docker-compose.prod.yml" up
 If you want to install `express` to the `next` project, run the folowing command:
 
 ```bash
-docker compose -f "docker-compose.dev.yml" run --rm next npm install express
-# ---------------------------------^-----------------^^---^^^^^^^^^^^^^^^^^-
+docker compose -f "docker-compose.dev.yml" run --rm next npm install -d express
+# ---------------------------------^-----------------^^---^^^^^^^^^^^^^^^^^^^^-
 ```
 
 ### Install a New Production Dependency
