@@ -13,8 +13,6 @@ services:
       BIGCOMMERCE_CANONICAL_STORE_DOMAIN: ${BIGCOMMERCE_CANONICAL_STORE_DOMAIN}
       BIGCOMMERCE_API_URL: ${BIGCOMMERCE_API_URL}
       BIGCOMMERCE_CDN_HOSTNAME: ${BIGCOMMERCE_CDN_HOSTNAME}
-      COMPANY_NAME: ${COMPANY_NAME}
-      SITE_NAME: ${SITE_NAME}
       BIGCOMMERCE_STORE_HASH: ${BIGCOMMERCE_STORE_HASH}
       BIGCOMMERCE_CHANNEL_ID: ${BIGCOMMERCE_CHANNEL_ID}
       BIGCOMMERCE_ACCESS_TOKEN: ${BIGCOMMERCE_ACCESS_TOKEN}
@@ -25,7 +23,7 @@ services:
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
     volumes:
       - ./next:/app
-      - node_modules_next:/app/node_modules
+      - ./next/node_modules:/app/node_modules
     restart: always
     ports:
       - 3000:3000
@@ -46,10 +44,10 @@ services:
       DATABASE_URI: ${PAYLOAD_URI}
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
     ports:
-      - '3300:3300'
+      - "3300:3300"
     volumes:
       - ./payload:/app
-      - node_modules_payload:/app/node_modules
+      - ./payload/node_modules:/app/node_modules
     depends_on:
       - postgres
     networks:
@@ -77,20 +75,8 @@ services:
 # https://stackoverflow.com/a/67010277
 volumes:
   payload-data:
-  node_modules_next:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./next/node_modules
-  node_modules_payload:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./payload/node_modules
 
 networks:
   postgresNet:
-    name: Payload Postgres 
+    name: Payload Postgres
     driver: bridge

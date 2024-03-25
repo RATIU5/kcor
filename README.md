@@ -3,6 +3,8 @@
 ## Prerequisites
 
 - [Docker](https://www.docker.com/)
+- [Node.js 18+](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
 
 ## Installation
 
@@ -14,12 +16,14 @@ cp .env.example .env
 ```
 
 3. Fill out the `.env` file with the necessary information
-4. Run the following script to set up `node_modules` for Docker:
+4. Run the following commands install the dependencies:
 
 ```bash
-./rebuild_node_modules.sh
+cd next && npm install
+cd ..
+cd payload && npm install
+cd ..
 ```
-
 
 ## Development
 
