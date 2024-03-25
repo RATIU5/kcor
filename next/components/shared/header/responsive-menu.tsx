@@ -20,7 +20,7 @@ export default function ResponsiveMenu(props: Readonly<ResponsiveMenuProps>) {
           variant="ghost"
           size="icon"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex lg:hidden "
+          className="flex xl:hidden "
         >
           {isOpen ? (
             <IconClose title="Close Menu" />
@@ -33,11 +33,11 @@ export default function ResponsiveMenu(props: Readonly<ResponsiveMenuProps>) {
             {props.storeName}
           </a>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Links isMobileOpen={true} />
         </div>
-        <div className="flex items-center justify-center lg:gap-4">
-          <Button size="icon" variant="ghost" className="hidden lg:flex">
+        <div className="flex items-center justify-center xl:gap-4">
+          <Button size="icon" variant="ghost" className="hidden xl:flex">
             <IconSearch title="Search the site" />
           </Button>
           <Button size="icon">
@@ -50,7 +50,7 @@ export default function ResponsiveMenu(props: Readonly<ResponsiveMenuProps>) {
       <div
         tabIndex={-1}
         className={cn(
-          'pointer-events-none absolute z-0 h-[calc(100vh-62px)] w-full bg-neutral-50 px-4 pt-4 opacity-0 transition-all duration-300 lg:hidden',
+          'pointer-events-none absolute z-0 h-[calc(100vh-62px)] w-full bg-neutral-50 px-4 pt-4 opacity-0 transition-all duration-300 xl:hidden',
           {
             'opacity-100': isOpen,
             'z-20': isOpen,
