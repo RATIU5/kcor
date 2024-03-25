@@ -21,9 +21,9 @@ export default function CTA() {
           Crafted with the finest materials for a night of unparalleled luxury.
         </p>
       </div>
-      <div className="hero-button flex w-full justify-center">
-        <Button className="w-48" variant="default">
-          Learn More
+      <div className="hero-button flex w-full max-w-36 justify-center border-b border-neutral-800">
+        <Button className="w-48 text-neutral-800" variant="ghost">
+          Learn More -&gt;
         </Button>
       </div>
     </div>
