@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function AboutHero() {
   return (
-    <div className="heroContainer mx-auto flex h-[700px] w-full max-w-[1800px] overflow-hidden rounded-3xl bg-aboutHero bg-cover bg-center bg-no-repeat 2xl:h-[700px]">
+    <div className="heroContainer mx-auto flex h-[700px] w-full max-w-[1448px] overflow-hidden rounded-3xl bg-aboutHero bg-cover bg-center bg-no-repeat 2xl:h-[700px]">
       <div className="hero-image-filter absolute left-0 top-0 h-full w-full"></div>
       <div className="hero-content-copy flex w-full flex-col justify-between px-4 md:px-14 md:py-10 2xl:flex-row 2xl:justify-start 2xl:px-20 2xl:pb-16">
         <div className="hero-text flex h-60 w-full flex-col py-10 2xl:h-48 2xl:w-[50%] 2xl:justify-between">

@@ -24,7 +24,7 @@ export default function HomeCarousel() {
   }, [emblaApi]);
 
   return (
-    <div className="relative my-16 flex w-full pb-8">
+    <div className="relative mx-auto my-16 flex w-full max-w-[1448px] pb-8">
       <Button
         className="absolute bottom-0 left-0 ml-4 md:ml-8"
         size="icon"
