@@ -1,4 +1,4 @@
-FROM node:18.18-slim as nodebase
+FROM node:18-slim as nodebase
 FROM ubuntu:lunar-20230816 as base
 
 # Install tini for better signal handling and cleanup processes
