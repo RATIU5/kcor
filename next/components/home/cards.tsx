@@ -2,7 +2,7 @@ import { Button } from '../ui/button';
 
 export default function Cards() {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+    <div className="mx-auto flex w-full max-w-[1448px] flex-col items-center justify-center gap-4 md:flex-row 2xl:gap-6">
       <Card
         title="LINNENS"
         image="https://images.unsplash.com/photo-1591625591034-75d303d2e1a4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -35,7 +35,7 @@ type CardProps = {
 function Card(props: CardProps) {
   return (
     <div
-      className="card h-[400px] w-full max-w-md rounded-3xl bg-cover bg-center md:max-w-sm lg:h-[500px]"
+      className="card h-[400px] w-full max-w-md rounded-3xl bg-cover bg-center md:max-w-[466px] lg:h-[500px]"
       style={{
         backgroundImage: `linear-gradient(191deg, rgba(0, 0, 0, 0.35) 7.65%, rgba(0, 0, 0, 0.35) 83.33%), url(${props.image})`,
       }}
