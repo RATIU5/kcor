@@ -1,7 +1,7 @@
 import Cards from '@/components/home/cards';
 import HomeCarousel from '@/components/home/carousel';
-import CTA from '@/components/home/cta';
 import HomeHero from '@/components/home/hero';
+import CTA from '@/components/shared/cta';
 import Section from '@/components/ui/section';
 
 export default function Page() {

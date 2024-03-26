@@ -2,7 +2,7 @@ import AboutEnough from '@/components/about/enough';
 import AboutGrid from '@/components/about/grid';
 import AboutHero from '@/components/about/hero';
 import Logos from '@/components/about/logos';
-import CTA from '@/components/home/cta';
+import CTA from '@/components/shared/cta';
 import Section from '@/components/ui/section';
 
 export default function Page() {
