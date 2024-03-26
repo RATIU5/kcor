@@ -1,6 +1,6 @@
-import Cards from '@/components/home/cards';
 import HomeCarousel from '@/components/home/carousel';
 import HomeHero from '@/components/home/hero';
+import Cards from '@/components/shared/cards';
 import CTA from '@/components/shared/cta';
 import Section from '@/components/ui/section';
 

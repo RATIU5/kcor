@@ -1,6 +1,6 @@
 import CategoryHero from '@/components/category/hero';
-import ProductCards from '@/components/category/product-cards';
 import CTA from '@/components/shared/cta';
+import ProductCards from '@/components/shared/product-cards';
 import Section from '@/components/ui/section';
 
 export default function Page() {
