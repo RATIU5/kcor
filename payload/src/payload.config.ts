@@ -12,33 +12,7 @@ const m = path.resolve(__dirname, "./emptyModuleMock.js");
 
 export default buildConfig({
   admin: {
-    autoLogin: {
-      email: "demo@payloadcms.com",
-      password: "demo",
-      prefillOnly: true,
-    },
-    bundler: webpackBundler(), // bundler-config
-    // livePreview: {
-    //   breakpoints: [
-    //     {
-    //       name: 'mobile',
-    //       height: 667,
-    //       label: 'Mobile',
-    //       width: 375,
-    //     },
-    //   ],
-    // },
-    webpack: (config) => ({
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve?.alias,
-          express: m,
-          [path.resolve(__dirname, "./cron/reset")]: m,
-        },
-      },
-    }),
+    bundler: webpackBundler(),
   },
   collections: [Users],
   editor: lexicalEditor({}),
