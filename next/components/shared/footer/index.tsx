@@ -39,10 +39,21 @@ export default function Footer() {
               Shop
             </h4>
             <ul className="border-l-[1px] pl-8">
-              <li className="mb-2">Shop</li>
-              <li className="mb-2">Shop</li>
-              <li className="mb-2">Shop</li>
-              <li className="mb-2">Shop</li>
+              <li className="mb-2">
+                <a href="/mattresses">Mattresses</a>
+              </li>
+              <li className="mb-2">
+                <a href="/bed-frames">Bed Frames</a>
+              </li>
+              <li className="mb-2">
+                <a href="/headboards">Headboards</a>
+              </li>
+              <li className="mb-2">
+                <a href="/toppers">Toppers</a>
+              </li>
+              <li className="mb-2">
+                <a href="/pillows">Pillows</a>
+              </li>
             </ul>
           </div>
           <div className="footer-container-2 pb-10 md:w-[280px]">

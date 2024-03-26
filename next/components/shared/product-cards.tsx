@@ -13,7 +13,7 @@ export default function ProductCards() {
         <Card
           image="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imageAlt="Home CTA"
-          url="/"
+          url="/product/1"
           title="Product 1"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           price="$100"
@@ -21,7 +21,7 @@ export default function ProductCards() {
         <Card
           image="https://images.unsplash.com/photo-1542639130-c9fadbddcc6b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imageAlt="Home CTA"
-          url="/"
+          url="/product/2"
           title="Product 2"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           price="$100"
@@ -29,7 +29,7 @@ export default function ProductCards() {
         <Card
           image="https://images.unsplash.com/photo-1511401139252-f158d3209c17?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imageAlt="Home CTA"
-          url="/"
+          url="/product/3"
           title="Product 3"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           price="$100"
@@ -39,7 +39,7 @@ export default function ProductCards() {
         <Card
           image="https://images.unsplash.com/photo-1575277340591-849c346c4542?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imageAlt="Home CTA"
-          url="/"
+          url="/product/4"
           title="Product 4"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           price="$100"
@@ -47,7 +47,7 @@ export default function ProductCards() {
         <Card
           image="https://images.unsplash.com/photo-1630809355701-af054d63cb31?q=80&w=1982&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imageAlt="Home CTA"
-          url="/"
+          url="/product/5"
           title="Product 5"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           price="$100"
@@ -55,7 +55,7 @@ export default function ProductCards() {
         <Card
           image="https://images.unsplash.com/photo-1691036562132-56a310d4b789?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imageAlt="Home CTA"
-          url="/"
+          url="/product/6"
           title="Product 6"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           price="$100"
@@ -77,13 +77,15 @@ type ProductProps = {
 function Card(props: ProductProps) {
   return (
     <div className="card h-[500px] w-full max-w-md rounded-3xl bg-cover bg-center md:h-[425px] md:max-w-[466px] lg:h-auto">
-      <Image
-        src={props.image}
-        alt={props.imageAlt}
-        width={466}
-        height={500}
-        className="max-h-[300px] w-full rounded-3xl object-cover md:h-[220px] lg:h-[400px] lg:w-[400px]"
-      />
+      <a href={props.url}>
+        <Image
+          src={props.image}
+          alt={props.imageAlt}
+          width={466}
+          height={500}
+          className="max-h-[300px] w-full rounded-3xl object-cover md:h-[220px] lg:h-[400px] lg:w-[400px]"
+        />
+      </a>
       <div className="content-container mx-auto flex max-w-[400px] flex-col items-start px-2 md:mx-0">
         <h3 className="mx-auto py-4 text-3xl font-bold text-stone-800 md:mx-0">
           <a href={props.url}>{props.title}</a>
