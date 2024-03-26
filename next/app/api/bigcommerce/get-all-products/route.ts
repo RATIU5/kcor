@@ -1,12 +1,12 @@
-import { env } from "@/lib/env";
+import { env } from '@/lib/env';
 
 export async function GET() {
-  const API = `${env.BIGCOMMERCE_CANONICAL_STORE_DOMAIN}/graphql`
+  const API = `${env.BIGCOMMERCE_CANONICAL_STORE_DOMAIN}/graphql`;
   const res = await fetch(API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "Authorization": `Bearer ${env.BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}`
+      Authorization: `Bearer ${env.BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}`,
     },
     body: JSON.stringify({
       query: `query paginateProducts(
@@ -28,10 +28,10 @@ export async function GET() {
             }
           }
         }
-      }`
-    })
-  })
-  const data = await res.json()
- 
-  return Response.json({ data })
+      }`,
+    }),
+  });
+  const data = await res.json();
+
+  return Response.json({ data });
 }
