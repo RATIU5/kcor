@@ -12,3 +12,6 @@ install:
 
 setup:
 		cp .env.example .env
+
+generate:
+		cd next && npm run generate
