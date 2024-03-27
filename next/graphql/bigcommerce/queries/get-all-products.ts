@@ -1,5 +1,5 @@
-import { makeBCClient } from "@/graphql";
-import { graphql } from "@/graphql/graphql-tada";
+import { makeBCClient } from '@/graphql';
+import { graphql } from '@/graphql/graphql-tada';
 import { registerUrql } from '@urql/next/rsc';
 
 const { getClient } = registerUrql(makeBCClient);
@@ -46,10 +46,12 @@ const AllProductsQuery = graphql(`
 `);
 
 export async function getAllProducts(pageSize: number) {
-  const result = await getClient().query(AllProductsQuery, {pageSize}).toPromise();
+  const result = await getClient()
+    .query(AllProductsQuery, { pageSize })
+    .toPromise();
   if (result.error) {
     console.log(result.error);
-    return {error: result.error, data: undefined };
+    return { error: result.error, data: undefined };
   }
-  return { data: result.data?.site.products.edges , error: undefined};
+  return { data: result.data?.site.products.edges, error: undefined };
 }
