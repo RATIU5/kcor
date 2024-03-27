@@ -21,6 +21,27 @@ const AllProductsQuery = graphql(`
           node {
             entityId
             name
+            images {
+              edges {
+                node {
+                  url(width: 200, height: 200)
+                  altText
+                }
+              }
+            }
+            description
+            prices {
+              priceRange {
+                max {
+                  value
+                  currencyCode
+                }
+                min {
+                  value
+                  currencyCode
+                }
+              }
+            }
           }
         }
       }
@@ -30,7 +51,6 @@ const AllProductsQuery = graphql(`
 
 export default async function Page() {
   const result = await getClient().query(AllProductsQuery, {});
-  console.log(result.data?.site.products.edges);
 
   return (
     <div className="flex flex-col">
@@ -38,7 +58,7 @@ export default async function Page() {
         <CategoryHero />
       </Section>
       <Section className="gap-16 bg-stone-100 px-4 py-10 text-neutral-800 md:px-10 md:py-14 2xl:px-20 2xl:py-20">
-        <ProductCards />
+        <ProductCards products={result.data?.site.products.edges} />
       </Section>
       <Section className="gap-16 bg-stone-300 px-4 py-10 md:px-14">
         <CTA />
