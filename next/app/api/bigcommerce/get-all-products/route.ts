@@ -1,9 +1,8 @@
-import { graphql } from '@/graphql';
-import { env } from '@/lib/env';
+import { query } from '@/graphql';
+import { graphql } from '@/graphql/graphql-tada';
 
 export async function GET() {
-  const API = `${env.BIGCOMMERCE_CANONICAL_STORE_DOMAIN}/graphql`;
-  const query = graphql(`
+  const qry = graphql(`
     query paginateProducts($pageSize: Int = 3, $cursor: String) {
       site {
         products(first: $pageSize, after: $cursor) {
@@ -22,17 +21,7 @@ export async function GET() {
       }
     }
   `);
-  const res = await fetch(API, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${env.BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}`,
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  });
-  const data = await res.json();
+  const data = await query(qry);
 
   return Response.json({ data });
 }
