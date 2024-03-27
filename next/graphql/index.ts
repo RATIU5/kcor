@@ -1,7 +1,7 @@
 import { env } from '@/lib/env';
 import { cacheExchange, createClient, fetchExchange } from '@urql/core';
 
-const getEndpoint = () => {
+const getBCEndpoint = () => {
   const storeHash = env.BIGCOMMERCE_STORE_HASH;
   const channelId = env.BIGCOMMERCE_CHANNEL_ID;
   const canonicalUrl = env.BIGCOMMERCE_CANONICAL_STORE_DOMAIN;
@@ -16,9 +16,24 @@ const getEndpoint = () => {
 };
 
 // https://commerce.nearform.com/open-source/urql/docs/advanced/server-side-rendering/#nextjs
-export const makeClient = () => {
+export const makeBCClient = () => {
   return createClient({
-    url: getEndpoint(),
+    url: getBCEndpoint(),
+    fetchOptions: {
+      headers: {
+        Authorization: `Bearer ${env.BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}`,
+      },
+    },
+    exchanges: [cacheExchange, fetchExchange],
+  });
+};
+
+export const makePLClient = () => {
+  return createClient({
+    url: `${env.PAYLOAD_API_URL}/api/graphql`,
+    fetchOptions: {
+      headers: {},
+    },
     exchanges: [cacheExchange, fetchExchange],
   });
 };
