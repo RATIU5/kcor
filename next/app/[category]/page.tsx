@@ -2,7 +2,7 @@ import CategoryHero from '@/components/category/hero';
 import CTA from '@/components/shared/cta';
 import ProductCards from '@/components/shared/product-cards';
 import Section from '@/components/ui/section';
-import { getAllProducts } from '@/graphql/bigcommerce/queries/get-all-products';
+import { getAllProducts } from '@/graphql/bigcommerce/get-all-products';
 
 export default async function Page() {
   const result = await getAllProducts(6);

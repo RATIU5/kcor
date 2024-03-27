@@ -1206,16 +1206,6 @@
     "@esbuild-kit/core-utils" "^3.3.2"
     "get-tsconfig" "^4.7.0"
 
-"@esbuild/linux-arm64@0.18.20":
-  "integrity" "sha512-2YbscF+UL7SQAVIpnWvYwM+3LskyDmPhe31pE7/aoTMFKKzIc9lLbyGUpmmb8a8AixOL61sQ/mFh3jEjHYFvdA=="
-  "resolved" "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.18.20.tgz"
-  "version" "0.18.20"
-
-"@esbuild/linux-arm64@0.19.12":
-  "integrity" "sha512-EoTjyYyLuVPfdPLsGVVVC8a0p1BFFvtpQDB/YLEhaXyf/5bczaGeN15QkR+O4S5LeJ92Tqotve7i1jn35qwvdA=="
-  "resolved" "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.19.12.tgz"
-  "version" "0.19.12"
-
 "@faceless-ui/modal@2.0.1":
   "integrity" "sha512-z1PaaLxwuX+1In4vhUxODZndGKdCY+WIqzvtnas3CaYGGCVJBSJ4jfv9UEEGZzcahmSy+71bEL89cUT6d36j1Q=="
   "resolved" "https://registry.npmjs.org/@faceless-ui/modal/-/modal-2.0.1.tgz"
@@ -1532,16 +1522,6 @@
     "@types/ws" "^8.5.4"
     "ws" "^8.13.0"
 
-"@libsql/linux-arm64-gnu@0.1.34":
-  "integrity" "sha512-r3dY1FDYZ7eX5HX7HyAoYSqK5FPugj5NSB5Bt/nz+ygBWdXASgSKxkE/RqjJIM59vXwv300iJX9qhR5fXv8sTw=="
-  "resolved" "https://registry.npmjs.org/@libsql/linux-arm64-gnu/-/linux-arm64-gnu-0.1.34.tgz"
-  "version" "0.1.34"
-
-"@libsql/linux-arm64-musl@0.1.34":
-  "integrity" "sha512-9AE/eNb9eQRcNsLxqtpLJxVEoIMmItrdwqJDImPJtOp10rhp4U0x/9RGKerl9Mg3ObVj676pyhAR2KzyudrOfQ=="
-  "resolved" "https://registry.npmjs.org/@libsql/linux-arm64-musl/-/linux-arm64-musl-0.1.34.tgz"
-  "version" "0.1.34"
-
 "@monaco-editor/loader@^1.3.3":
   "integrity" "sha512-00ioBig0x642hytVspPl7DbQyaSWRaolYie/UFNjoTdvoKPzo6xrXLhTk9ixgIKcLH5b5vDOjVNiGyY+uDCUlg=="
   "resolved" "https://registry.npmjs.org/@monaco-editor/loader/-/loader-1.4.0.tgz"
@@ -1617,6 +1597,11 @@
     "@aws-sdk/lib-storage" "^3.267.0"
     "amazon-cognito-identity-js" "^6.1.2"
     "nodemailer" "6.9.8"
+
+"@payloadcms/plugin-seo@^2.2.1":
+  "integrity" "sha512-EqC+98oAwH0qlqVM/X7/zvKKAvWuHAGj8zzcwNGJN/Q7tIh9NB5isKSxeIXI8e9QxuRzCnR2MVBi0Q/I0SKZTQ=="
+  "resolved" "https://registry.npmjs.org/@payloadcms/plugin-seo/-/plugin-seo-2.2.1.tgz"
+  "version" "2.2.1"
 
 "@payloadcms/richtext-lexical@^0.7.0":
   "integrity" "sha512-3ZrX+vsNdPYi6QYDMlssfR+ikmwdXSVXdcfC+iiEd8kg3++NErLeOFwaJY8i9YSuxES/WnDuLU934sUZfcniyQ=="
@@ -2157,16 +2142,6 @@
     "@smithy/abort-controller" "^2.2.0"
     "@smithy/types" "^2.12.0"
     "tslib" "^2.6.2"
-
-"@swc/core-linux-arm64-gnu@1.3.107":
-  "integrity" "sha512-HWgnn7JORYlOYnGsdunpSF8A+BCZKPLzLtEUA27/M/ZuANcMZabKL9Zurt7XQXq888uJFAt98Gy+59PU90aHKg=="
-  "resolved" "https://registry.npmjs.org/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.3.107.tgz"
-  "version" "1.3.107"
-
-"@swc/core-linux-arm64-musl@1.3.107":
-  "integrity" "sha512-vfPF74cWfAm8hyhS8yvYI94ucMHIo8xIYU+oFOW9uvDlGQRgnUf/6DEVbLyt/3yfX5723Ln57U8uiMALbX5Pyw=="
-  "resolved" "https://registry.npmjs.org/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.3.107.tgz"
-  "version" "1.3.107"
 
 "@swc/core@^1.0.0", "@swc/core@^1.0.46", "@swc/core@^1.2.147", "@swc/core@1.3.107":
   "integrity" "sha512-zKhqDyFcTsyLIYK1iEmavljZnf4CCor5pF52UzLAz4B6Nu/4GLU+2LQVAf+oRHjusG39PTPjd2AlRT3f3QWfsQ=="
@@ -6149,7 +6124,7 @@
   "resolved" "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz"
   "version" "0.0.1"
 
-"payload@^1.8.2 || ^2.0.0", "payload@^2.0.0", "payload@^2.3.0", "payload@^2.4.0":
+"payload@^1.8.2 || ^2.0.0", "payload@^2.0.0", "payload@^2.3.0", "payload@^2.4.0", "payload@^2.7.0":
   "integrity" "sha512-UaruSsw7nFOzLurBjPWIHiDzGuTIGEK5UrEEfHagJnYe6xUP3/cg44qD+RQNb5D1FkV7x/B+ha8Ci7YVdz9eAA=="
   "resolved" "https://registry.npmjs.org/payload/-/payload-2.11.2.tgz"
   "version" "2.11.2"
@@ -7312,7 +7287,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", "react@^18.2.0", "react@>= 16.8.0", "react@>=15", "react@>=15.6.2", "react@>=16", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@>=17.x", "react@>=18", "react@18.2.0":
+"react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", "react@^18.0.0", "react@^18.2.0", "react@>= 16.8.0", "react@>=15", "react@>=15.6.2", "react@>=16", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8.0", "react@>=17.x", "react@>=18", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

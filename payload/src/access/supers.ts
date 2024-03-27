@@ -7,5 +7,5 @@ import { checkRole } from "../collections/users/check-role";
 type IsAdmin = (args: AccessArgs<unknown, User>) => boolean;
 
 export const admins: IsAdmin = ({ req: { user } }) => {
-  return checkRole(["admin"], user);
+  return checkRole(["super"], user);
 };

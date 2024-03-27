@@ -1,6 +1,8 @@
-**/.vercel
-**/.next
-**/dist
-**/build
-**/yarn.lock
-**/node_modules
+.vercel
+.next
+/dist
+/build
+/yarn.lock
+/node_modules
+graphql-env.d.ts
+schema.graphql
