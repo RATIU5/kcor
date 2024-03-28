@@ -2,12 +2,12 @@ import type { FieldHook } from "payload/types";
 
 import type { User } from "../../../payload-types";
 
-// ensure the first user created is an admin
+// ensure the first user created is a super
 // 1. lookup a single user on create as succinctly as possible
-// 2. if there are no users found, append `admin` to the roles array
+// 2. if there are no users found, append `super` to the roles array
 // access control is already handled by this fields `access` property
-// it ensures that only admins can create and update the `roles` field
-export const ensureFirstUserIsAdmin: FieldHook<User> = async ({
+// it ensures that only supers can create and update the `roles` field
+export const ensureFirstUserIsSuper: FieldHook<User> = async ({
   operation,
   req,
   value,
@@ -19,9 +19,9 @@ export const ensureFirstUserIsAdmin: FieldHook<User> = async ({
       limit: 0,
     });
     if (users.totalDocs === 0) {
-      // if `admin` not in array of values, add it
-      if (!(value || []).includes("admin")) {
-        return [...(value || []), "admin"];
+      // if `super` not in array of values, add it
+      if (!(value || []).includes("super")) {
+        return [...(value || []), "super"];
       }
     }
   }

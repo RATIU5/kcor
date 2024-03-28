@@ -6,25 +6,21 @@ import { payloadCloud } from "@payloadcms/plugin-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload/config";
+import { Pages } from "./collections/pages";
 import Users from "./collections/users";
 
-const m = path.resolve(__dirname, "./emptyModuleMock.js");
-
 export default buildConfig({
+  editor: lexicalEditor({}),
   admin: {
     bundler: webpackBundler(),
   },
-  collections: [Users],
-  editor: lexicalEditor({}),
-  graphQL: {
-    schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
-  },
+  collections: [Users, Pages],
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   rateLimit: {
     max: 10000, // limit each IP per windowMs
     trustProxy: true,
     window: 2 * 60 * 1000, // 2 minutes
   },
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
@@ -33,5 +29,8 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
   }),
+  graphQL: {
+    schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
+  },
   plugins: [payloadCloud()],
 });

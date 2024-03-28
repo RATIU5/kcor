@@ -2,16 +2,16 @@ import type { CollectionConfig } from "payload/types";
 
 import { email as validateEmail } from "payload/dist/fields/validations";
 
-import { admins } from "../../access/admins";
+import { supers } from "../../access";
 import { checkRole } from "./check-role";
-import { ensureFirstUserIsAdmin } from "./hooks/ensure-first-user-is-admin";
+import { ensureFirstUserIsSuper } from "./hooks/ensure-first-user-is-super";
 import { loginAfterCreate } from "./hooks/login-after-create";
 
 const Users: CollectionConfig = {
   access: {
-    admin: ({ req: { user } }) => checkRole(["admin"], user),
-    create: ({ req: { user } }) => checkRole(["admin"], user),
-    delete: () => false,
+    admin: ({ req: { user } }) => checkRole(["super"], user),
+    create: ({ req: { user } }) => checkRole(["super"], user),
+    delete: ({ req: { user } }) => checkRole(["super"], user),
   },
   admin: {
     defaultColumns: ["name", "email", "roles"],
@@ -35,23 +35,27 @@ const Users: CollectionConfig = {
     {
       name: "roles",
       access: {
-        create: admins,
-        read: admins,
-        update: admins,
+        create: supers,
+        read: supers,
+        update: supers,
       },
-      defaultValue: ["user"],
-      hasMany: true,
+      defaultValue: ["viewer"],
+      hasMany: false,
       hooks: {
-        beforeChange: [ensureFirstUserIsAdmin],
+        beforeChange: [ensureFirstUserIsSuper],
       },
       options: [
+        {
+          label: "super",
+          value: "super",
+        },
         {
           label: "admin",
           value: "admin",
         },
         {
-          label: "user",
-          value: "user",
+          label: "viewer",
+          value: "viewer",
         },
       ],
       type: "select",

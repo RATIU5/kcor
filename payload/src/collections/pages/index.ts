@@ -1,4 +1,7 @@
 import type { CollectionConfig } from "payload/types";
+import { admins, adminsOrPublished, supers } from "../../access";
+import { Hero1 } from "../../blocks/hero1";
+import formatSlug from "../../utils/format-slug";
 
 export const Pages: CollectionConfig = {
   slug: "pages",
@@ -14,10 +17,10 @@ export const Pages: CollectionConfig = {
     drafts: true,
   },
   access: {
-    read: adminsOrPublished,
-    update: admins,
-    create: admins,
-    delete: admins,
+    read: adminsOrPublished || supers,
+    update: admins || supers,
+    create: admins || supers,
+    delete: admins || supers,
   },
   fields: [
     {
@@ -26,45 +29,43 @@ export const Pages: CollectionConfig = {
       required: true,
     },
     {
-      name: "publishedOn",
-      type: "date",
-      admin: {
-        position: "sidebar",
-        date: {
-          pickerAppearance: "dayAndTime",
-        },
-      },
-      hooks: {
-        beforeChange: [
-          ({ siblingData, value }) => {
-            if (siblingData._status === "published" && !value) {
-              return new Date();
-            }
-            return value;
-          },
-        ],
-      },
-    },
-    {
       type: "tabs",
       tabs: [
         {
           label: "Hero",
-          fields: [hero],
-        },
-        {
-          label: "Content",
           fields: [
             {
-              name: "layout",
+              name: "hero",
               type: "blocks",
               required: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive],
+              blocks: [Hero1],
             },
           ],
         },
+        // {
+        //   label: "Content",
+        //   fields: [
+        //     {
+        //       name: "layout",
+        //       type: "blocks",
+        //       required: true,
+        //       blocks: [CallToAction, Content, MediaBlock, Archive],
+        //     },
+        //   ],
+        // },
       ],
     },
-    slugField(),
+    {
+      name: "slug",
+      admin: {
+        position: "sidebar",
+      },
+      hooks: {
+        beforeValidate: [formatSlug("title")],
+      },
+      index: true,
+      label: "Slug",
+      type: "text",
+    },
   ],
 };

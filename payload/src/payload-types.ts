@@ -9,8 +9,8 @@
 export interface Config {
   collections: {
     users: User;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
+    "payload-preferences": PayloadPreference;
+    "payload-migrations": PayloadMigration;
   };
   globals: {};
 }
@@ -21,7 +21,7 @@ export interface Config {
 export interface User {
   id: number;
   name?: string | null;
-  roles?: ('admin' | 'user')[] | null;
+  roles?: ("super" | "admin" | "viewer")[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -40,7 +40,7 @@ export interface User {
 export interface PayloadPreference {
   id: number;
   user: {
-    relationTo: 'users';
+    relationTo: "users";
     value: number | User;
   };
   key?: string | null;
@@ -68,7 +68,6 @@ export interface PayloadMigration {
   createdAt: string;
 }
 
-
-declare module 'payload' {
+declare module "payload" {
   export interface GeneratedTypes extends Config {}
 }
