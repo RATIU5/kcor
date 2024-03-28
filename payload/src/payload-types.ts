@@ -9,8 +9,9 @@
 export interface Config {
   collections: {
     users: User;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    pages: Page;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {};
 }
@@ -21,7 +22,7 @@ export interface Config {
 export interface User {
   id: number;
   name?: string | null;
-  roles?: ("super" | "admin" | "viewer")[] | null;
+  roles?: ('super' | 'admin' | 'viewer') | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -35,12 +36,34 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  hero: {
+    title: string;
+    content?: string | null;
+    backgroundImage: string;
+    cta?: string | null;
+    ctaLink?: string | null;
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'hero1';
+  }[];
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
   id: number;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   key?: string | null;
@@ -68,6 +91,7 @@ export interface PayloadMigration {
   createdAt: string;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }

@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload/types";
-import { admins, adminsOrPublished, supers } from "../../access";
+import { anyoneOrPublished, supersOrAdmins } from "../../access";
+import { Carousel1 } from "../../blocks/carousel";
+import { CTA1 } from "../../blocks/cta";
 import { Hero1 } from "../../blocks/hero1";
 import formatSlug from "../../utils/format-slug";
 
@@ -7,53 +9,31 @@ export const Pages: CollectionConfig = {
   slug: "pages",
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "slug", "updatedAt"],
+    defaultColumns: ["title", "slug", "updatedAt", "status"],
   },
-  // hooks: {
-  //   afterChange: [revalidatePage],
-  //   afterRead: [populateArchiveBlock],
-  // },
   versions: {
     drafts: true,
+    maxPerDoc: 10,
   },
   access: {
-    read: adminsOrPublished || supers,
-    update: admins || supers,
-    create: admins || supers,
-    delete: admins || supers,
+    read: anyoneOrPublished,
+    update: supersOrAdmins,
+    create: supersOrAdmins,
+    delete: supersOrAdmins,
   },
   fields: [
     {
-      name: "title",
       type: "text",
+      admin: {
+        position: "sidebar",
+      },
+      name: "title",
       required: true,
     },
     {
-      type: "tabs",
-      tabs: [
-        {
-          label: "Hero",
-          fields: [
-            {
-              name: "hero",
-              type: "blocks",
-              required: true,
-              blocks: [Hero1],
-            },
-          ],
-        },
-        // {
-        //   label: "Content",
-        //   fields: [
-        //     {
-        //       name: "layout",
-        //       type: "blocks",
-        //       required: true,
-        //       blocks: [CallToAction, Content, MediaBlock, Archive],
-        //     },
-        //   ],
-        // },
-      ],
+      name: "sections",
+      type: "blocks",
+      blocks: [Hero1, Carousel1, CTA1],
     },
     {
       name: "slug",

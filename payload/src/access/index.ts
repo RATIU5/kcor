@@ -7,19 +7,27 @@ import { checkRole } from "../collections/users/check-role";
 type IsRole = (args: AccessArgs<unknown, User>) => boolean;
 
 export const supers: IsRole = ({ req: { user } }) => {
-  return checkRole(["super"], user);
+  return checkRole("super", user);
 };
 
 export const admins: IsRole = ({ req: { user } }) => {
-  return checkRole(["admin"], user);
+  return checkRole("admin", user);
 };
 
 export const viewers: IsRole = ({ req: { user } }) => {
-  return checkRole(["viewer"], user);
+  return checkRole("viewer", user);
 };
 
-export const adminsOrPublished: Access = ({ req: { user } }) => {
-  if (user && checkRole(["admin"], user)) {
+export const supersOrAdmins: Access = ({ req: { user } }) => {
+  return checkRole("super", user) || checkRole("admin", user);
+};
+
+export const anyone: Access = ({ req: { user } }) => {
+  return !!user;
+};
+
+export const anyoneOrPublished: Access = ({ req: { user } }) => {
+  if (user) {
     return true;
   }
 

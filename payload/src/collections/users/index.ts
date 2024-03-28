@@ -9,9 +9,9 @@ import { loginAfterCreate } from "./hooks/login-after-create";
 
 const Users: CollectionConfig = {
   access: {
-    admin: ({ req: { user } }) => checkRole(["super"], user),
-    create: ({ req: { user } }) => checkRole(["super"], user),
-    delete: ({ req: { user } }) => checkRole(["super"], user),
+    admin: ({ req: { user } }) => checkRole("super", user),
+    create: ({ req: { user } }) => checkRole("super", user),
+    delete: ({ req: { user } }) => checkRole("super", user),
   },
   admin: {
     defaultColumns: ["name", "email", "roles"],
@@ -36,7 +36,6 @@ const Users: CollectionConfig = {
       name: "roles",
       access: {
         create: supers,
-        read: supers,
         update: supers,
       },
       defaultValue: ["viewer"],

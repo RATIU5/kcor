@@ -19,9 +19,8 @@ export const ensureFirstUserIsSuper: FieldHook<User> = async ({
       limit: 0,
     });
     if (users.totalDocs === 0) {
-      // if `super` not in array of values, add it
-      if (!(value || []).includes("super")) {
-        return [...(value || []), "super"];
+      if (value === undefined || value !== "super") {
+        return "super";
       }
     }
   }
