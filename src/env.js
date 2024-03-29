@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 export const env = createEnv({
   /**
@@ -7,8 +7,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    NODE_ENV: z.enum(["development", "test", "production"]),
-    PAYLOAD_PORT: z.string(),
+    NODE_ENV: z.enum(['development', 'test', 'production']),
     PAYLOAD_URI: z.string(),
     PAYLOAD_SECRET: z.string(),
     BIGCOMMERCE_CANONICAL_STORE_DOMAIN: z.string(),
@@ -37,7 +36,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    PAYLOAD_PORT: process.env.PAYLOAD_PORT,
     PAYLOAD_URI: process.env.PAYLOAD_URI,
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
     BIGCOMMERCE_CANONICAL_STORE_DOMAIN:
