@@ -1,6 +1,6 @@
 /** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').PluginOptions} */
 const config = {
-  singleQuote: true,
+  singleQuote: false,
   arrowParens: "always",
   trailingComma: "all",
   printWidth: 80,

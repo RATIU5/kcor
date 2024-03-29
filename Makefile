@@ -1,17 +1,14 @@
 dev:
-		docker compose -f "docker-compose.yml" up
+		docker compose up
 
 prettier:
-		cd next && npm run prettier
+		pnpm prettier
 
 test:
-		cd next && npm run test
+		pnpm run test
 
 install:
-		cd next && npm install && cd .. && cd payload && npm install
+		pnpm install
 
 setup:
 		cp .env.example .env
-
-generate:
-		cd next && npm run generate

@@ -1,16 +1,11 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": ["./tsconfig.json"],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: ["./tsconfig.json"],
   },
-  "plugins": [
-    "@typescript-eslint",
-    "unicorn",
-    "prettier",
-    "unused-imports",
-  ],
-  "extends": [
+  plugins: ["@typescript-eslint", "unicorn", "prettier", "unused-imports"],
+  extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
@@ -23,8 +18,8 @@ const config = {
       version: "detect",
     },
   },
-  "rules": {
-    "curly": ["error", "all"],
+  rules: {
+    curly: ["error", "all"],
     "prefer-const": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-floating-promises": "error",
@@ -54,16 +49,6 @@ const config = {
         allowTemplateLiterals: true,
       },
     ],
-    "comma-dangle": [
-      "error",
-      {
-        arrays: "always-multiline",
-        objects: "always-multiline",
-        imports: "always-multiline",
-        exports: "always-multiline",
-        functions: "never",
-      },
-    ],
     "object-curly-spacing": ["error", "always"],
     "arrow-parens": ["error", "always"],
     "linebreak-style": 0,
@@ -84,33 +69,33 @@ const config = {
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {
-        "prefer": "type-imports",
-        "fixStyle": "inline-type-imports",
+        prefer: "type-imports",
+        fixStyle: "inline-type-imports",
       },
     ],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
-        "argsIgnorePattern": "^_",
-        "ignoreRestSiblings": true,
-        "vars": "all",
+        argsIgnorePattern: "^_",
+        ignoreRestSiblings: true,
+        vars: "all",
       },
     ],
     "@typescript-eslint/require-await": "off",
     "@typescript-eslint/no-misused-promises": [
       "error",
       {
-        "checksVoidReturn": {
-          "attributes": false,
+        checksVoidReturn: {
+          attributes: false,
         },
       },
     ],
     "unicorn/filename-case": [
       "error",
       {
-        "case": "kebabCase",
+        case: "kebabCase",
       },
     ],
   },
-}
+};
 module.exports = config;
