@@ -10,6 +10,8 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     POSTGRES_URI: z.string(),
     PAYLOAD_SECRET: z.string(),
+    PAYLOAD_ADMIN_EMAIL: z.string(),
+    PAYLOAD_ADMIN_PASSWORD: z.string(),
     BIGCOMMERCE_CANONICAL_STORE_DOMAIN: z.string(),
     BIGCOMMERCE_API_URL: z.string(),
     BIGCOMMERCE_CDN_HOSTNAME: z.string(),
@@ -38,6 +40,8 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     POSTGRES_URI: process.env.POSTGRES_URI,
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
+    PAYLOAD_ADMIN_EMAIL: process.env.PAYLOAD_ADMIN_EMAIL,
+    PAYLOAD_ADMIN_PASSWORD: process.env.PAYLOAD_ADMIN_PASSWORD,
     BIGCOMMERCE_CANONICAL_STORE_DOMAIN:
       process.env.BIGCOMMERCE_CANONICAL_STORE_DOMAIN,
     BIGCOMMERCE_API_URL: process.env.BIGCOMMERCE_API_URL,
