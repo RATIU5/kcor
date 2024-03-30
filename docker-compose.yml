@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -9,6 +9,8 @@ services:
     env_file: .env
     environment:
       NODE_ENV: ${NODE_ENV}
+      POSTGRES_URI: ${POSTGRES_URI}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       BIGCOMMERCE_CANONICAL_STORE_DOMAIN: ${BIGCOMMERCE_CANONICAL_STORE_DOMAIN}
       BIGCOMMERCE_API_URL: ${BIGCOMMERCE_API_URL}
       BIGCOMMERCE_CDN_HOSTNAME: ${BIGCOMMERCE_CDN_HOSTNAME}
@@ -17,7 +19,6 @@ services:
       BIGCOMMERCE_ACCESS_TOKEN: ${BIGCOMMERCE_ACCESS_TOKEN}
       BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN: ${BIGCOMMERCE_CUSTOMER_IMPERSONATION_TOKEN}
       PAYLOAD_API_URL: ${PAYLOAD_API_URL}
-      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       NEXT_PUBLIC_VERCEL_URL: ${NEXT_PUBLIC_VERCEL_URL}
       NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET: ${NEXT_PUBLIC_DEFAULT_REVALIDATE_TARGET}
     volumes:
@@ -46,7 +47,7 @@ services:
       - payload-data:/var/lib/postgresql/data/ #using a volume
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
     ports:
-      - '5432:5432'
+      - "5432:5432"
     networks:
       - postgresNet
 

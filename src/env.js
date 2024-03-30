@@ -36,7 +36,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    POSTGRES_URI: process.env.PAYLOAD_URI,
+    POSTGRES_URI: process.env.POSTGRES_URI,
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
     BIGCOMMERCE_CANONICAL_STORE_DOMAIN:
       process.env.BIGCOMMERCE_CANONICAL_STORE_DOMAIN,

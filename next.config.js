@@ -1,3 +1,4 @@
+import { withPayload } from "@payloadcms/next";
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
@@ -26,4 +27,5 @@ const config = {
   },
 };
 
-export default config;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+export default withPayload(config);
