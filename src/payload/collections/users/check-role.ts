@@ -1,10 +1,10 @@
-import type { User } from "../../payload-types";
+import type { User } from '@/payload-types';
 
 export const checkRole = (
-  role: User["roles"] = "viewer",
+  role: User['role'] = 'viewer',
   user?: User,
 ): boolean => {
-  if (user && user.roles === role) {
+  if (user && user.role === role) {
     return true;
   }
   return false;

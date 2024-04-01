@@ -16,6 +16,10 @@
     "test": "pnpm lint && pnpm prettier:check"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "3.0.0-alpha.49",
+    "@payloadcms/next": "3.0.0-alpha.49",
+    "@payloadcms/richtext-lexical": "3.0.0-alpha.49",
+    "@payloadcms/ui": "3.0.0-alpha.49",
     "@t3-oss/env-nextjs": "^0.9.2",
     "@tanstack/react-query": "^5.25.0",
     "@trpc/client": "next",
@@ -35,11 +39,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@payloadcms/db-postgres": "3.0.0-alpha.49",
-    "@payloadcms/next": "3.0.0-alpha.49",
-    "@payloadcms/richtext-lexical": "3.0.0-alpha.49",
-    "@payloadcms/richtext-slate": "3.0.0-alpha.49",
-    "@payloadcms/ui": "3.0.0-alpha.49",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.11",
     "@types/eslint": "^8.56.2",
@@ -49,18 +48,21 @@
     "@typescript-eslint/eslint-plugin": "5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unicorn": "^51.0.1",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "eslint": "^8.57.0",
     "postcss": "^8.4.34",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=18.19.0"
   },
   "ct3aMetadata": {
     "initVersion": "7.30.0"

@@ -1,50 +1,45 @@
-import type {
-  CollectionConfig,
-  EmailField,
-  ValidateOptions,
-} from "payload/types";
+import type { CollectionConfig } from "payload/types";
 
-import { email as validateEmail } from "node_modules/payload/dist/fields/validations";
-
-import { supers } from "../../access";
+import { supers } from "@/payload/access";
 import { checkRole } from "./check-role";
+import { ensureFirstUserIsSuper } from "./hooks/ensure-first-user-is-admin";
+import { loginAfterCreate } from "./hooks/login-after-create";
 
 const Users: CollectionConfig = {
   access: {
-    admin: ({ req: { user } }) => checkRole("super", user),
-    create: ({ req: { user } }) => checkRole("super", user),
-    delete: ({ req: { user } }) => checkRole("super", user),
+    admin: ({ req: { user } }) => checkRole("super", user.role),
+    create: () => false,
+    delete: () => false,
   },
   admin: {
-    defaultColumns: ["name", "email", "roles"],
-    useAsTitle: "name",
+    defaultColumns: ["email", "role"],
+    useAsTitle: "id",
   },
   auth: true,
   fields: [
     {
-      name: "name",
-      type: "text",
-    },
-    {
       // override default email field to add a custom validate function to prevent users from changing the login email
       name: "email",
       type: "email",
-      validate: (value, args) => {
-        // call the payload default email validation
-        return validateEmail(
-          value,
-          args as ValidateOptions<unknown, unknown, EmailField>,
-        );
+      validate: (value, _) => {
+        if (value?.endsWith("@maloufcompanies.com")) {
+          return true;
+        }
+        return "invalid email address";
       },
     },
     {
-      name: "roles",
+      name: "role",
       access: {
         create: supers,
+        read: supers,
         update: supers,
       },
-      defaultValue: ["viewer"],
+      defaultValue: "viewer",
       hasMany: false,
+      hooks: {
+        beforeChange: [ensureFirstUserIsSuper],
+      },
       options: [
         {
           label: "super",
@@ -62,6 +57,9 @@ const Users: CollectionConfig = {
       type: "select",
     },
   ],
+  hooks: {
+    afterChange: [loginAfterCreate],
+  },
   slug: "users",
   timestamps: true,
 };
