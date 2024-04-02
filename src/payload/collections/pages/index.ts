@@ -5,7 +5,7 @@ import formatSlug from "@/payload/utils/format-slug";
 import type { CollectionConfig } from "payload/types";
 import { anyoneOrPublished, supersOrAdmins } from "../../access";
 
-export const Pages: CollectionConfig = {
+const Pages: CollectionConfig = {
   slug: "pages",
   admin: {
     useAsTitle: "title",
@@ -49,3 +49,5 @@ export const Pages: CollectionConfig = {
     },
   ],
 };
+
+export default Pages;

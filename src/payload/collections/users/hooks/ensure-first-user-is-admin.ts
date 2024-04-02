@@ -19,7 +19,7 @@ export const ensureFirstUserIsSuper: FieldHook<User> = async ({
       limit: 0,
     });
     if (users.totalDocs === 0) {
-      // if `super` not the value, change it
+      // if `super` is not the value, change it
       if (value !== "super") {
         return "super";
       }
