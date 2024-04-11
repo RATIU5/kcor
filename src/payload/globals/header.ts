@@ -23,19 +23,70 @@ const Header: GlobalConfig = {
                 {
                   name: "type",
                   type: "radio",
+                  admin: {
+                    layout: "horizontal",
+                    width: "50%",
+                  },
+                  defaultValue: "internal",
                   options: [
                     {
                       label: "Page Link",
-                      value: "int",
+                      value: "internal",
                     },
                     {
                       label: "Custom Link",
-                      value: "cus",
+                      value: "custom",
                     },
                   ],
-                  defaultValue: "cus",
+                },
+                {
+                  type: "checkbox",
+                  name: "newTab",
+                  label: "Open in New Tab",
+                  admin: {
+                    style: {
+                      alignSelf: "flex-end",
+                    },
+                    width: "50%",
+                  },
+                },
+                {
+                  type: "relationship",
+                  name: "reference",
+                  admin: {
+                    condition: (_, siblingData) => {
+                      console.log(siblingData);
+                      return siblingData?.type === "internal";
+                    },
+                  },
+                  relationTo: ["pages"],
+                  required: true,
+                  maxDepth: 1,
+                  label: "Link to Page",
+                },
+                {
+                  type: "text",
+                  name: "url",
+                  admin: {
+                    condition: (_, siblingData) => {
+                      console.log(siblingData);
+                      return siblingData?.type === "custom";
+                    },
+                  },
+                  label: "Custom URL",
+                  required: true,
+                },
+                {
+                  type: "text",
+                  name: "label",
+                  required: true,
+                  label: "Label",
                 },
               ],
+            },
+            {
+              type: "row",
+              fields: [],
             },
           ],
         },
